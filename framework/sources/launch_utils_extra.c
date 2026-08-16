@@ -6,7 +6,7 @@
 /*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 19:00:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:25:42 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/16 21:49:07 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,17 @@ static void	ft_putstr(char *s)
 static void	ft_putnbr(int n)
 {
 	char	c;
+	long	nbr;
 
-	if (n < 0)
+	nbr = n;
+	if (nbr < 0)
 	{
 		write(1, "-", 1);
-		n = -n;
+		nbr = -nbr;
 	}
-	if (n > 9)
-		ft_putnbr(n / 10);
-	c = '0' + n % 10;
+	if (nbr > 9)
+		ft_putnbr(nbr / 10);
+	c = '0' + nbr % 10;
 	write(1, &c, 1);
 }
 
