@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   launch_utils_extra.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 19:00:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:21:53 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/16 21:25:42 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
 
-static char *get_status_str(int status)
+static char	*get_status_str(int status)
 {
 	if (status == STATUS_OK)
 		return ("[OK]");
@@ -35,9 +35,9 @@ static char *get_status_str(int status)
 	return ("[UNKNOWN]");
 }
 
-static void ft_putstr(char *s)
+static void	ft_putstr(char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s && s[i])
@@ -47,9 +47,9 @@ static void ft_putstr(char *s)
 	}
 }
 
-static void ft_putnbr(int n)
+static void	ft_putnbr(int n)
 {
-	char c;
+	char	c;
 
 	if (n < 0)
 	{
@@ -62,7 +62,7 @@ static void ft_putnbr(int n)
 	write(1, &c, 1);
 }
 
-static char *get_color(int status)
+static char	*get_color(int status)
 {
 	if (status == STATUS_OK)
 		return (C_GREEN);
@@ -79,10 +79,10 @@ static char *get_color(int status)
 	return (C_RED);
 }
 
-t_bool print_all(t_result_buf *buf)
+t_bool	print_all(t_result_buf *buf)
 {
-	int i;
-	int passed;
+	int	i;
+	int	passed;
 
 	i = 0;
 	passed = 0;
