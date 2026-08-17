@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_utils_extra.c                               :+:      :+:    :+:   */
+/*   print_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 19:00:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:49:07 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/17 20:38:56 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <unistd.h>
 
-static char	*get_status_str(int status)
+static char	*ft_get_status(int status)
 {
 	if (status == STATUS_OK)
 		return ("[OK]");
@@ -64,7 +65,7 @@ static void	ft_putnbr(int n)
 	write(1, &c, 1);
 }
 
-static char	*get_color(int status)
+static char	*ft_get_color(int status)
 {
 	if (status == STATUS_OK)
 		return (C_GREEN);
@@ -81,7 +82,7 @@ static char	*get_color(int status)
 	return (C_RED);
 }
 
-t_bool	print_all(t_result_buf *buf)
+t_bool	ft_print_all(t_result_buf *buf)
 {
 	int	i;
 	int	passed;
@@ -90,12 +91,12 @@ t_bool	print_all(t_result_buf *buf)
 	passed = 0;
 	while (i < buf->count)
 	{
-		ft_putstr(buf->data[i].func_name);
+		ft_putstr(buf->data[i].func);
 		ft_putstr(": ");
 		ft_putstr(buf->data[i].test_name);
 		ft_putstr(" : ");
-		ft_putstr(get_color(buf->data[i].status));
-		ft_putstr(get_status_str(buf->data[i].status));
+		ft_putstr(ft_get_color(buf->data[i].status));
+		ft_putstr(ft_get_status(buf->data[i].status));
 		ft_putstr(C_RESET);
 		ft_putstr("\n");
 		if (buf->data[i].status == STATUS_OK)

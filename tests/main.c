@@ -3,18 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:00:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:17:57 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/17 20:27:55 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libunit.h"
-
-int	dummy_tests_launcher(void);
+int	ft_dummy_tests(void);
 
 int	main(void)
 {
-	return (dummy_tests_launcher());
+	return (ft_dummy_tests());
 }

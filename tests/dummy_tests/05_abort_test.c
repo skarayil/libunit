@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   05_abrt_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybalkan <ybalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 16:42:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 16:42:00 by ybalkan          ###   ########.fr       */
+/*   Updated: 2026/08/17 20:56:37 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
+#include <stdlib.h>
 
-int	abrt_test(void)
+int	ft_abort_test(void)
 {
-	raise(SIGABRT);
+	abort();
 	return (0);
 }

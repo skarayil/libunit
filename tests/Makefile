@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+         #
+#    By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/15 11:00:00 by ybalkan           #+#    #+#              #
-#    Updated: 2026/08/16 21:17:55 by skarayil         ###   ########.fr        #
+#    Updated: 2026/08/17 20:56:52 by skarayil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRCS		= main.c \
 		  dummy_tests/02_ko_test.c \
 		  dummy_tests/03_segv_test.c \
 		  dummy_tests/04_bus_test.c \
-		  dummy_tests/05_abrt_test.c \
+		  dummy_tests/05_abort_test.c \
 		  dummy_tests/06_fpe_test.c \
 		  dummy_tests/07_pipe_test.c \
 		  dummy_tests/08_ill_test.c \
@@ -32,16 +32,16 @@ SRCS		= main.c \
 all: $(BIN)
 
 $(LIB):
-	$(MAKE) -C ../framework
+	@$(MAKE) -C ../framework
 
 $(BIN): $(LIB)
-	$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) -L.. -lunit -o $(BIN)
+	@$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) -L.. -lunit -o $(BIN)
 
 test: $(BIN)
 	-./$(BIN)
 
 clean:
-	rm -f $(BIN)
+	@rm -f $(BIN)
 
 fclean: clean
 

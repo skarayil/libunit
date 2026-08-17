@@ -3,17 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   06_fpe_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybalkan <ybalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 16:42:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 16:42:00 by ybalkan          ###   ########.fr       */
+/*   Updated: 2026/08/17 20:46:30 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <signal.h>
 
-int	fpe_test(void)
+int	ft_fpe_test(void)
 {
-	raise(SIGFPE);
+	int	a;
+	int	b;
+	int	c;
+
+	a = 5;
+	b = 0;
+	c = a / b;
+	(void)c;
 	return (0);
 }

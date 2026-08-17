@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   02_ko_test.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybalkan <ybalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 14:25:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 11:00:00 by ybalkan          ###   ########.fr       */
+/*   Updated: 2026/08/17 20:46:16 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ko_test(void)
+int	ft_ko_test(void)
 {
 	return (-1);
 }

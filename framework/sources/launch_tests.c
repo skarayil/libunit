@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   launch_tests.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 10:45:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:17:57 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/17 20:44:39 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <stdlib.h>
 
-t_status	analyze(int status);
-void		run_one(t_unit_test *lst, t_result_buf *buf, int i);
-
-static int	count_tests(t_unit_test *lst)
+static int	ft_count_tests(t_unit_test *lst)
 {
 	int	n;
 
@@ -28,7 +26,7 @@ static int	count_tests(t_unit_test *lst)
 	return (n);
 }
 
-static t_bool	buf_init(t_result_buf *buf, int capacity)
+static t_bool	ft_buf_init(t_result_buf *buf, int capacity)
 {
 	buf->data = (t_result *)malloc(sizeof(t_result) * capacity);
 	if (!buf->data)
@@ -38,21 +36,21 @@ static t_bool	buf_init(t_result_buf *buf, int capacity)
 	return (TRUE);
 }
 
-static void	run_all(t_unit_test *lst, t_result_buf *buf)
+static void	ft_run_all(t_unit_test *lst, t_result_buf *buf)
 {
 	int	i;
 
 	i = 0;
 	while (lst && i < buf->capacity)
 	{
-		run_one(lst, buf, i);
+		ft_run_one(lst, buf, i);
 		i++;
 		lst = lst->next;
 	}
 	buf->count = i;
 }
 
-static void	free_list(t_unit_test **lst)
+static void	ft_free_list(t_unit_test **lst)
 {
 	t_unit_test	*tmp;
 
@@ -64,21 +62,21 @@ static void	free_list(t_unit_test **lst)
 	}
 }
 
-int	launch_tests(t_unit_test **lst)
+int	ft_launch_tests(t_unit_test **lst)
 {
 	t_result_buf	buf;
 	t_bool			all_ok;
 	int				total;
 
-	total = count_tests(*lst);
+	total = ft_count_tests(*lst);
 	if (total == 0)
 		return (0);
-	if (buf_init(&buf, total) == FALSE)
+	if (ft_buf_init(&buf, total) == FALSE)
 		return (-1);
-	run_all(*lst, &buf);
-	all_ok = print_all(&buf);
+	ft_run_all(*lst, &buf);
+	all_ok = ft_print_all(&buf);
 	free(buf.data);
-	free_list(lst);
+	ft_free_list(lst);
 	if (all_ok == TRUE)
 		return (0);
 	return (-1);

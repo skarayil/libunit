@@ -1,21 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_utils.c                                     :+:      :+:    :+:   */
+/*   signal_analyzer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 16:30:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:17:57 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/17 20:44:52 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libunit.h"
+#include <stdlib.h>
+#include <unistd.h>
 
-t_status	analyze(int status)
+static t_status	ft_get_signal(int sig)
 {
-	int	sig;
+	if (sig == SIGSEGV)
+		return (STATUS_SEGV);
+	if (sig == SIGBUS)
+		return (STATUS_BUS);
+	if (sig == SIGABRT)
+		return (STATUS_ABRT);
+	if (sig == SIGFPE)
+		return (STATUS_FPE);
+	if (sig == SIGPIPE)
+		return (STATUS_PIPE);
+	if (sig == SIGILL)
+		return (STATUS_ILL);
+	if (sig == SIGALRM)
+		return (STATUS_TIMEOUT);
+	return (STATUS_UNKNOWN);
+}
 
+t_status	ft_analyze(int status)
+{
 	if (WIFEXITED(status))
 	{
 		if (WEXITSTATUS(status) == 0)
@@ -23,25 +42,11 @@ t_status	analyze(int status)
 		return (STATUS_KO);
 	}
 	if (WIFSIGNALED(status))
-	{
-		sig = WTERMSIG(status);
-		if (sig == SIGSEGV)
-			return (STATUS_SEGV);
-		if (sig == SIGBUS)
-			return (STATUS_BUS);
-		if (sig == SIGABRT)
-			return (STATUS_ABRT);
-		if (sig == SIGFPE)
-			return (STATUS_FPE);
-		if (sig == SIGPIPE)
-			return (STATUS_PIPE);
-		if (sig == SIGILL)
-			return (STATUS_ILL);
-	}
+		return (ft_get_signal(WTERMSIG(status)));
 	return (STATUS_UNKNOWN);
 }
 
-void	run_one(t_unit_test *lst, t_result_buf *buf, int i)
+void	ft_run_one(t_unit_test *lst, t_result_buf *buf, int i)
 {
 	pid_t	pid;
 	int		wstatus;
@@ -58,8 +63,8 @@ void	run_one(t_unit_test *lst, t_result_buf *buf, int i)
 	else
 	{
 		waitpid(pid, &wstatus, 0);
-		buf->data[i].status = analyze(wstatus);
+		buf->data[i].status = ft_analyze(wstatus);
 	}
-	buf->data[i].func_name = lst->func_name;
+	buf->data[i].func = lst->func;
 	buf->data[i].test_name = lst->name;
 }

@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/15 15:00:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 21:17:57 by skarayil         ###   ########.fr       */
+/*   Updated: 2026/08/17 20:32:43 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libunit.h"
 
 int	ft_atoi_launcher(void);
 

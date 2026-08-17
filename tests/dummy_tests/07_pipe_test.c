@@ -3,17 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   07_pipe_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ybalkan <ybalkan@student.42kocaeli.com.    +#+  +:+       +#+        */
+/*   By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/16 16:42:00 by ybalkan           #+#    #+#             */
-/*   Updated: 2026/08/16 16:42:00 by ybalkan          ###   ########.fr       */
+/*   Updated: 2026/08/17 20:46:33 by skarayil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <signal.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-int	pipe_test(void)
+int	ft_pipe_test(void)
 {
-	raise(SIGPIPE);
+	int		pipefd[2];
+	pid_t	pid;
+
+	if (pipe(pipefd) == -1)
+		return (-1);
+	pid = fork();
+	if (pid == -1)
+		return (-1);
+	if (pid == 0)
+	{
+		close(pipefd[0]);
+		close(pipefd[1]);
+		exit(0);
+	}
+	else
+	{
+		close(pipefd[0]);
+		wait(NULL);
+		write(pipefd[1], "X", 1);
+		close(pipefd[1]);
+	}
 	return (0);
 }

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: skarayil <skarayil@student.42kocaeli.co    +#+  +:+       +#+         #
+#    By: skarayil <skarayil@student.42kocaeli>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/08/15 11:00:00 by ybalkan           #+#    #+#              #
-#    Updated: 2026/08/16 21:20:34 by skarayil         ###   ########.fr        #
+#    Updated: 2026/08/17 20:50:29 by skarayil         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,16 +41,16 @@ SRCS		= ft_atoi.c \
 all: $(BIN)
 
 $(LIB):
-	$(MAKE) -C ../framework
+	@$(MAKE) -C ../framework
 
 $(BIN): $(LIB)
-	$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) -L.. -lunit -o $(BIN)
+	@$(CC) $(CFLAGS) $(INCLUDE) $(SRCS) -L.. -lunit -o $(BIN)
 
 test: $(BIN)
 	-./$(BIN)
 
 clean:
-	rm -f $(BIN)
+	@rm -f $(BIN)
 
 fclean: clean
 
