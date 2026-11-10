@@ -19,7 +19,7 @@
 
 ## 🎯 Projenin Amacı
 
-<img align="right" alt="Library Animation" width="300" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bmo2Z3k2MHE0aXBjcGN0YW93bXd5OG9vZGF0dDl2emliNXFsN3ExZiZlcD12MV9naWZzX3JlbGF0ZWQmY3Q9Zw/T9tZRjonSPMLtM4gsY/giphy.gif">
+<img align="right" alt="Library Animation" width="300" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZnBreWp5N2NleG90dTN3Z3JrcHNvMnE3dmUyZTgybXd6aTUwcGx2ayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/11ZSwQNWba4YF2/giphy.gif">
 
 Bu proje, C'de yazılmış fonksiyonları/kütüphaneleri test etmek için **kendi unit test framework'ümü** oluşturmayı amaçlamaktadır. Klasik `assert()` tabanlı test yaklaşımlarının en büyük sorunu, bir testin segfault vermesi durumunda tüm test binary'sinin çökmesidir. libunit bu sorunu **her testi `fork()` ile ayrı bir child process'te çalıştırarak** çözer.
 
